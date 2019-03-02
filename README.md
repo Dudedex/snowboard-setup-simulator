@@ -18,4 +18,4 @@ Initialize it with `npm install`
 Run it with `ng serve` and navigate to `http://localhost:4200/`
 
 
-###Or Visit: http://www.dudedex.com
+## Or Visit: https://www.dudedex.com
