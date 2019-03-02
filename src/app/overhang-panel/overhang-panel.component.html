@@ -1,0 +1,24 @@
+<div class="overhang" *ngIf="boardData" [style.width.px]="boardData.length * 2">
+  <span class="overhang-label--{{placement}}" [style.float]="'left'" [style.left.px]="boardData.length - (2 + boardData.stance - boardData.setBackInInches *2.54 * 2) - 30">{{leftOverhang}} cm</span>
+  <span class="overhang-label--{{placement}}" [style.float]="'right'" [style.right.px]="boardData.length  - (2 + boardData.stance + boardData.setBackInInches *2.54 * 2) - 30">{{rightOverhang}} cm</span>
+  <span *ngIf="leftOverhang >= 1" class="overhang-warning-{{placement}}"
+        [style.border-color]="getWarningLevel(leftOverhang)"
+        [style.border-width.px]="getWarningWidth(leftOverhang)"
+        [style.float]="'left'"
+        [style.left.px]="boardData.length - (2 + boardData.stance - boardData.setBackInInches *2.54 * 2) - 25">
+        </span>
+  <span *ngIf="rightOverhang >= 1" class="overhang-warning-{{placement}}"
+        [style.border-color]="getWarningLevel(rightOverhang)"
+        [style.border-width.px]="getWarningWidth(rightOverhang)"
+        [style.float]="'right'"
+        [style.right.px]="boardData.length  - (2 + boardData.stance + boardData.setBackInInches *2.54 * 2) - 25">
+        </span>
+  <div class="overhang-{{placement}}-title">
+    <ng-container *ngIf="placement === 'top'">
+      Toe overhang:
+    </ng-container>
+    <ng-container *ngIf="placement === 'bot'">
+      Heel overhang:
+    </ng-container>
+  </div>
+</div>

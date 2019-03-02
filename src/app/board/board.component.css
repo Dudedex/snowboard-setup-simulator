@@ -1,0 +1,46 @@
+.board-container {
+  position: relative;
+  overflow: hidden;
+  margin: 0px auto;
+}
+.board-boarder {
+  border-radius: 50px;
+  border: black solid 1px;
+  position: relative;
+}
+
+.board {
+  position: relative;
+  margin: 0px auto;
+}
+
+.sidecut {
+  position: absolute;
+  border: black solid 1px;
+  border-radius: 100%;
+  z-index: 5;
+  background: #ffffff;
+  margin: 0px auto;
+}
+
+.sidecut-bot {
+}
+
+.sidecut-top {
+}
+
+.waist {
+  min-width: 0px;
+  min-height: 100%;
+  z-index: 8;
+  position: absolute;
+  border: black dashed 1px;
+}
+
+.binding--right {
+  position: absolute;
+}
+
+.binding--left {
+  position: absolute;
+}
