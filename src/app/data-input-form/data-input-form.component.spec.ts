@@ -4,7 +4,7 @@ import { DataInputFormComponent } from './data-input-form.component';
 import {BoardComponent} from '../board/board.component';
 import {OverhangPanelComponent} from '../overhang-panel/overhang-panel.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {AppComponent} from '../app.component';
+import {AppComponent} from '../../app.component';
 import {BoardPanelComponent} from '../board-panel/board-panel.component';
 import {BindingComponent} from '../binding/binding.component';
 import {FormsModule} from '@angular/forms';

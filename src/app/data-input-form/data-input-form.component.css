@@ -1,3 +1,8 @@
 .row {
   margin-bottom: 0.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+.container-fluid {
+  margin-bottom: 3rem;
 }
