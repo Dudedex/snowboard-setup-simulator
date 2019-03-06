@@ -18,10 +18,10 @@
     ],
     "paths": {
       "snowboard-setup-simulator": [
-        "dist/snowboard-setup-simulator"
+        "/projects/snowboard-setup-simulator/src/lib"
       ],
       "snowboard-setup-simulator/*": [
-        "dist/snowboard-setup-simulator/*"
+        "projects/snowboard-setup-simulator/src/lib/*"
       ]
     }
   }

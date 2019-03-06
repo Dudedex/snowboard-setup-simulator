@@ -28,7 +28,7 @@
     "zone.js": "^0.8.26",
     "paths": {
       "snowboard-setup-simulator": [
-        "dist/snowboard-setup-simulator"
+        "projects/snowboard-setup-simulator"
       ]
     }
   },

@@ -2,7 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
-import {SnowboardSetupSimulatorComponent, SnowboardSetupSimulatorModule} from 'snowboard-setup-simulator';
+import {SnowboardSetupSimulatorModule} from 'snowboard-setup-simulator/snowboard-setup-simulator.module';
+import {SnowboardSetupSimulatorComponent} from 'snowboard-setup-simulator/snowboard-setup-simulator.component';
 
 @NgModule({
   declarations: [
