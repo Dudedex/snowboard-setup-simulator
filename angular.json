@@ -118,6 +118,41 @@
           }
         }
       }
+    },
+    "snowboard-setup-simulator": {
+      "root": "projects/snowboard-setup-simulator",
+      "sourceRoot": "projects/snowboard-setup-simulator/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/snowboard-setup-simulator/tsconfig.lib.json",
+            "project": "projects/snowboard-setup-simulator/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/snowboard-setup-simulator/src/test.ts",
+            "tsConfig": "projects/snowboard-setup-simulator/tsconfig.spec.json",
+            "karmaConfig": "projects/snowboard-setup-simulator/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/snowboard-setup-simulator/tsconfig.lib.json",
+              "projects/snowboard-setup-simulator/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "snowboard-bindings-sim"
