@@ -16,3 +16,12 @@
   font-size: 0.6rem;
   background-color: gray;
 }
+
+.plate-active {
+  background-color: rgba(255, 0, 0, 0.50);
+}
+
+
+.binding-active {
+  border: red 3px solid;
+}

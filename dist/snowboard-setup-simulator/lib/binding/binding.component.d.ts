@@ -4,7 +4,11 @@ export declare class BindingComponent implements OnInit, OnChanges {
     bootSize: number;
     boardWidth: number;
     bindingOffset: number;
+    isActive: string;
+    activeType: string;
     constructor();
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
+    getFootbedClass(): "" | "plate-active";
+    getBidingClass(): "" | "binding-active";
 }

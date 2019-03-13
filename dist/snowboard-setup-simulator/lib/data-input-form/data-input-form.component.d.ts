@@ -4,4 +4,5 @@ export declare class DataInputFormComponent implements OnInit {
     boardData: BoardDataDto;
     constructor();
     ngOnInit(): void;
+    setMarkPart(type: string): void;
 }

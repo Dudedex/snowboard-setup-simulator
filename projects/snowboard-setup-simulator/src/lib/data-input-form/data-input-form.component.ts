@@ -16,4 +16,8 @@ export class DataInputFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  public setMarkPart(type: string) {
+    this.boardData.markPart = type;
+  }
+
 }

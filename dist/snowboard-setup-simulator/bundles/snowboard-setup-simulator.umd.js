@@ -1,8 +1,11 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/forms'), require('@angular/common'), require('@angular/platform-browser'), require('@angular/core')) :
-    typeof define === 'function' && define.amd ? define('snowboard-setup-simulator', ['exports', '@angular/forms', '@angular/common', '@angular/platform-browser', '@angular/core'], factory) :
-    (factory((global['snowboard-setup-simulator'] = {}),global.ng.forms,global.ng.common,global.ng.platformBrowser,global.ng.core));
-}(this, (function (exports,forms,common,platformBrowser,i0) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('snowboard-setup-simulator/translation/translation-provider'), require('@angular/forms'), require('@angular/common'), require('@angular/platform-browser'), require('@angular/common/locales/de'), require('@angular/common/locales/en'), require('@angular/core'), require('@ngx-translate/core')) :
+    typeof define === 'function' && define.amd ? define('snowboard-setup-simulator', ['exports', 'snowboard-setup-simulator/translation/translation-provider', '@angular/forms', '@angular/common', '@angular/platform-browser', '@angular/common/locales/de', '@angular/common/locales/en', '@angular/core', '@ngx-translate/core'], factory) :
+    (factory((global['snowboard-setup-simulator'] = {}),global.translationProvider,global.ng.forms,global.ng.common,global.ng.platformBrowser,global.ng.common.locales.de,global.ng.common.locales.en,global.ng.core,global.core));
+}(this, (function (exports,translationProvider,forms,common,platformBrowser,localeDe,localeEn,i0,core) { 'use strict';
+
+    localeDe = localeDe && localeDe.hasOwnProperty('default') ? localeDe['default'] : localeDe;
+    localeEn = localeEn && localeEn.hasOwnProperty('default') ? localeEn['default'] : localeEn;
 
     /**
      * @fileoverview added by tsickle
@@ -27,7 +30,8 @@
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var SnowboardSetupSimulatorComponent = /** @class */ (function () {
-        function SnowboardSetupSimulatorComponent() {
+        function SnowboardSetupSimulatorComponent(translate) {
+            this.translate = translate;
         }
         /**
          * @return {?}
@@ -36,6 +40,29 @@
          * @return {?}
          */
             function () {
+                this.translationSetup();
+            };
+        /**
+         * @param {?} changes
+         * @return {?}
+         */
+        SnowboardSetupSimulatorComponent.prototype.ngOnChanges = /**
+         * @param {?} changes
+         * @return {?}
+         */
+            function (changes) {
+                this.translationSetup();
+            };
+        /**
+         * @private
+         * @return {?}
+         */
+        SnowboardSetupSimulatorComponent.prototype.translationSetup = /**
+         * @private
+         * @return {?}
+         */
+            function () {
+                translationProvider.TranslationProvider.setupTranslationProvider(this.translate, this.locale);
             };
         SnowboardSetupSimulatorComponent.decorators = [
             { type: i0.Component, args: [{
@@ -44,7 +71,14 @@
                     }] }
         ];
         /** @nocollapse */
-        SnowboardSetupSimulatorComponent.ctorParameters = function () { return []; };
+        SnowboardSetupSimulatorComponent.ctorParameters = function () {
+            return [
+                { type: core.TranslateService }
+            ];
+        };
+        SnowboardSetupSimulatorComponent.propDecorators = {
+            locale: [{ type: i0.Input }]
+        };
         return SnowboardSetupSimulatorComponent;
     }());
 
@@ -90,6 +124,63 @@
                     return $('.board-container').height() - 2;
                 }
                 return 0;
+            };
+        /**
+         * @return {?}
+         */
+        BoardComponent.prototype.getBoardClass = /**
+         * @return {?}
+         */
+            function () {
+                if (this.boardData.markPart === 'length') {
+                    return 'red';
+                }
+                return '';
+            };
+        /**
+         * @return {?}
+         */
+        BoardComponent.prototype.getWaistClass = /**
+         * @return {?}
+         */
+            function () {
+                if (this.boardData.markPart === 'waist') {
+                    return 'red';
+                }
+                return '';
+            };
+        /**
+         * @return {?}
+         */
+        BoardComponent.prototype.getSidecutClass = /**
+         * @return {?}
+         */
+            function () {
+                if (['sidecut', 'length'].indexOf(this.boardData.markPart) >= 0) {
+                    return 'red';
+                }
+                return '';
+            };
+        /**
+         * @param {?} binding
+         * @return {?}
+         */
+        BoardComponent.prototype.isBindingActive = /**
+         * @param {?} binding
+         * @return {?}
+         */
+            function (binding) {
+                if (['bindings', 'boots'].indexOf(this.boardData.markPart) >= 0) {
+                    return true;
+                }
+                if (binding === 'right' && ['rightBinding', 'bindingsBootPlateRight'].indexOf(this.boardData.markPart) >= 0) {
+                    console.log('right active');
+                    return true;
+                }
+                if (binding === 'left' && ['leftBinding', 'bindingsBootPlateLeft'].indexOf(this.boardData.markPart) >= 0) {
+                    console.log('left active');
+                    return true;
+                }
             };
         /**
          * @return {?}
@@ -231,8 +322,8 @@
         BoardComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'app-board',
-                        template: "<div *ngIf=\"boardData\">\n  <app-overhang-panel [boardData]=\"boardData\" [placement]=\"'top'\" [leftOverhang]=\"currentLeftToeOverhang\" [rightOverhang]=\"currentRightToeOverhang\"></app-overhang-panel>\n  <div class=\"board\"  [style.width.px]=\"boardData.length * cmInPixelFactor + 6\">\n    <div class=\"binding--right\" [style.right.px]=\"boardData.length + 6 - (cmInPixelFactor + boardData.stance + boardData.setBackInInches * inchesInCm * cmInPixelFactor )\">\n      <app-binding [angle]=\"boardData.rightAngle\" [bootSize]=\"boardData.bootSize\" [boardWidth]=\"boardData.waist * cmInPixelFactor + boardData.sidecutInM\" [bindingOffset]=\"boardData.bindingOffsetRight\"></app-binding>\n    </div>\n    <div class=\"binding--left\" [style.left.px]=\"boardData.length + 6 - boardData.stance + boardData.setBackInInches * inchesInCm * cmInPixelFactor\">\n      <app-binding [angle]=\"boardData.leftAngle\" [bootSize]=\"boardData.bootSize\" [boardWidth]=\"boardData.waist * cmInPixelFactor + boardData.sidecutInM\" [bindingOffset]=\"boardData.bindingOffsetLeft\"></app-binding>\n    </div>\n    <div class=\"board-container\" [style.width.px]=\"boardData.length * cmInPixelFactor + 6\" [style.height.px]=\"boardData.waist * cmInPixelFactor + boardData.sidecutInM\" #boardContainer>\n      <div class=\"board-boarder\" [style.width.px]=\"boardData.length * cmInPixelFactor + 6\" [style.height.px]=\"boardData.waist * cmInPixelFactor + boardData.sidecutInM\">\n        <div class=\"sidecut sidecut-top\"\n             [style.width.px]=\"boardData.sidecutInM * mInPixelFactor * 2\"\n             [style.height.px]=\"boardData.sidecutInM * mInPixelFactor * 2\"\n             [style.margin-left.px]=\" - boardData.sidecutInM * 200 + cmInPixelFactor + boardData.length + boardData.sidecutSetbackInInches * inchesInCm\"\n             [style.margin-top.px]=\"-boardData.sidecutInM * mInPixelFactor * 2 + getContainerHeight() - boardData.waist * cmInPixelFactor - getSidecutMargin()\"\n        ></div>\n        <div class=\"waist\" [style.right.px]=\"boardData.length - boardData.sidecutSetbackInInches * inchesInCm * cmInPixelFactor\"></div>\n        <div class=\"sidecut sidecut-bot\"\n             [style.width.px]=\"boardData.sidecutInM * mInPixelFactor * 2\"\n             [style.height.px]=\"boardData.sidecutInM * mInPixelFactor * 2\"\n             [style.margin-left.px]=\" - boardData.sidecutInM * 200 + cmInPixelFactor + boardData.length + boardData.sidecutSetbackInInches * inchesInCm\"\n             [style.margin-top.px]=\"boardData.waist * cmInPixelFactor + getSidecutMargin()\"></div>\n      </div>\n    </div>\n  </div>\n  <app-overhang-panel [boardData]=\"boardData\" [placement]=\"'bot'\" [leftOverhang]=\"currentLeftHeelOverhang\" [rightOverhang]=\"currentRightHeelOverhang\"></app-overhang-panel>\n</div>\n",
-                        styles: [".board-container{position:relative;overflow:hidden;margin:0 auto}.board-boarder{border-radius:50px;border:1px solid #000;position:relative}.board{position:relative;margin:0 auto}.sidecut{position:absolute;border:1px solid #000;border-radius:100%;z-index:5;background:#fff;margin:0 auto}.waist{min-width:0;min-height:100%;z-index:8;position:absolute;border:1px dashed #000}.binding--left,.binding--right{position:absolute}"]
+                        template: "<div *ngIf=\"boardData\">\r\n  <app-overhang-panel [boardData]=\"boardData\" [placement]=\"'top'\" [leftOverhang]=\"currentLeftToeOverhang\" [rightOverhang]=\"currentRightToeOverhang\"></app-overhang-panel>\r\n  <div class=\"board\"  [style.width.px]=\"boardData.length * cmInPixelFactor + 6\">\r\n    <div class=\"binding--right\" [style.right.px]=\"boardData.length + 6 - (cmInPixelFactor + boardData.stance + boardData.setBackInInches * inchesInCm * cmInPixelFactor )\">\r\n      <app-binding [isActive]=\"isBindingActive('right')\" [activeType]=\"boardData.markPart\" [angle]=\"boardData.rightAngle\" [bootSize]=\"boardData.bootSize\" [boardWidth]=\"boardData.waist * cmInPixelFactor + boardData.sidecutInM\" [bindingOffset]=\"boardData.bindingOffsetRight\"></app-binding>\r\n    </div>\r\n    <div class=\"binding--left\" [style.left.px]=\"boardData.length + 6 - boardData.stance + boardData.setBackInInches * inchesInCm * cmInPixelFactor\">\r\n      <app-binding [isActive]=\"isBindingActive('left')\" [activeType]=\"boardData.markPart\" [angle]=\"boardData.leftAngle\" [bootSize]=\"boardData.bootSize\" [boardWidth]=\"boardData.waist * cmInPixelFactor + boardData.sidecutInM\" [bindingOffset]=\"boardData.bindingOffsetLeft\"></app-binding>\r\n    </div>\r\n    <div class=\"board-container\" [style.width.px]=\"boardData.length * cmInPixelFactor + 6\" [style.height.px]=\"boardData.waist * cmInPixelFactor + boardData.sidecutInM\" #boardContainer>\r\n      <div class=\"board-boarder {{getBoardClass()}}\" [style.width.px]=\"boardData.length * cmInPixelFactor + 6\" [style.height.px]=\"boardData.waist * cmInPixelFactor + boardData.sidecutInM\">\r\n        <div class=\"sidecut sidecut-top {{getSidecutClass()}}\"\r\n             [style.width.px]=\"boardData.sidecutInM * mInPixelFactor * 2\"\r\n             [style.height.px]=\"boardData.sidecutInM * mInPixelFactor * 2\"\r\n             [style.margin-left.px]=\" - boardData.sidecutInM * 200 + cmInPixelFactor + boardData.length + boardData.sidecutSetbackInInches * inchesInCm\"\r\n             [style.margin-top.px]=\"-boardData.sidecutInM * mInPixelFactor * 2 + getContainerHeight() - boardData.waist * cmInPixelFactor - getSidecutMargin()\"\r\n        ></div>\r\n        <div class=\"waist {{getWaistClass()}}\" [style.right.px]=\"boardData.length - boardData.sidecutSetbackInInches * inchesInCm * cmInPixelFactor\"></div>\r\n        <div class=\"sidecut sidecut-bot {{getSidecutClass()}}\"\r\n             [style.width.px]=\"boardData.sidecutInM * mInPixelFactor * 2\"\r\n             [style.height.px]=\"boardData.sidecutInM * mInPixelFactor * 2\"\r\n             [style.margin-left.px]=\" - boardData.sidecutInM * 200 + cmInPixelFactor + boardData.length + boardData.sidecutSetbackInInches * inchesInCm\"\r\n             [style.margin-top.px]=\"boardData.waist * cmInPixelFactor + getSidecutMargin()\"></div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <app-overhang-panel [boardData]=\"boardData\" [placement]=\"'bot'\" [leftOverhang]=\"currentLeftHeelOverhang\" [rightOverhang]=\"currentRightHeelOverhang\"></app-overhang-panel>\r\n</div>\r\n",
+                        styles: [".board-container{position:relative;overflow:hidden;margin:0 auto}.board-boarder{border-radius:50px;border:1px solid #000;position:relative}.board{position:relative;margin:0 auto}.sidecut{position:absolute;border:1px solid #000;border-radius:100%;z-index:5;background:#fff;margin:0 auto}.waist{min-width:0;min-height:100%;z-index:8;position:absolute;border:1px dashed #000}.binding--left,.binding--right{position:absolute}.red{border-color:red}"]
                     }] }
         ];
         /** @nocollapse */
@@ -283,7 +374,7 @@
         BoardPanelComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'app-board-panel',
-                        template: "<div class=\"main\">\n  <div class=\"panel__bd board\">\n    <app-board [boardData]=\"boardData\"></app-board>\n  </div>\n  <app-data-input-form [boardData]=\"boardData\"></app-data-input-form>\n</div>\n",
+                        template: "<div class=\"main\">\r\n  <div class=\"panel__bd board\">\r\n    <app-board [boardData]=\"boardData\"></app-board>\r\n  </div>\r\n  <app-data-input-form [boardData]=\"boardData\"></app-data-input-form>\r\n</div>\r\n",
                         styles: [".board{min-height:80px;margin:0 auto}.main{width:100%;min-width:300px;margin-bottom:5rem}"]
                     }] }
         ];
@@ -317,11 +408,39 @@
          */
             function (changes) {
             };
+        /**
+         * @return {?}
+         */
+        BindingComponent.prototype.getFootbedClass = /**
+         * @return {?}
+         */
+            function () {
+                if (this.isActive) {
+                    if (['bindingsBootPlateLeft', 'bindingsBootPlateRight', 'boots'].indexOf(this.activeType) >= 0) {
+                        return 'plate-active';
+                    }
+                }
+                return '';
+            };
+        /**
+         * @return {?}
+         */
+        BindingComponent.prototype.getBidingClass = /**
+         * @return {?}
+         */
+            function () {
+                if (this.isActive) {
+                    if (['bindings', 'leftBinding', 'rightBinding', 'boots'].indexOf(this.activeType) >= 0) {
+                        return 'binding-active';
+                    }
+                }
+                return '';
+            };
         BindingComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'app-binding',
-                        template: "<div class=\"binding\" [style.transform]=\"'rotate(' + (360 - angle) + 'deg)'\" [style.height.px]=\"bootSize * 2\"\n     [style.width.px]=\"bootSize/5 * 4\" [style.margin-left.px]=\"-bootSize/5 * 2\" [style.margin-top.px]=\"(boardWidth - bootSize *2)/2  - bindingOffset*2\">\n  <div class=\"footbed\" [style.width.px]=\"bootSize/5 * 4 -2\" [style.height.px]=\"bootSize * 1.25\" [style.margin-top.px]=\"bootSize/5 * 1.7\">\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\n  </div>\n</div>\n",
-                        styles: [".binding{border-radius:40% 40% 38% 38%;border:1px solid #000;border-bottom:5px solid #000;border-top:2px solid #000;position:absolute;overflow:hidden;z-index:10;margin-top:0}.footbed{text-align:center;overflow:hidden;font-size:.6rem;background-color:gray}"]
+                        template: "<div class=\"binding {{getBidingClass()}}\" [style.transform]=\"'rotate(' + (360 - angle) + 'deg)'\" [style.height.px]=\"bootSize * 2\"\r\n     [style.width.px]=\"bootSize/5 * 4\" [style.margin-left.px]=\"-bootSize/5 * 2\" [style.margin-top.px]=\"(boardWidth - bootSize *2)/2  - bindingOffset*2\">\r\n  <div class=\"footbed {{getFootbedClass()}}\" [style.width.px]=\"bootSize/5 * 4 -2\" [style.height.px]=\"bootSize * 1.25\" [style.margin-top.px]=\"bootSize/5 * 1.7\">\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n    /\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\<br>\r\n  </div>\r\n</div>\r\n",
+                        styles: [".binding{border-radius:40% 40% 38% 38%;border:1px solid #000;border-bottom:5px solid #000;border-top:2px solid #000;position:absolute;overflow:hidden;z-index:10;margin-top:0}.footbed{text-align:center;overflow:hidden;font-size:.6rem;background-color:gray}.plate-active{background-color:rgba(255,0,0,.5)}.binding-active{border:3px solid red}"]
                     }] }
         ];
         /** @nocollapse */
@@ -330,7 +449,9 @@
             angle: [{ type: i0.Input }],
             bootSize: [{ type: i0.Input }],
             boardWidth: [{ type: i0.Input }],
-            bindingOffset: [{ type: i0.Input }]
+            bindingOffset: [{ type: i0.Input }],
+            isActive: [{ type: i0.Input }],
+            activeType: [{ type: i0.Input }]
         };
         return BindingComponent;
     }());
@@ -393,7 +514,7 @@
         OverhangPanelComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'app-overhang-panel',
-                        template: "<div class=\"overhang\" *ngIf=\"boardData\" [style.width.px]=\"boardData.length * 2\">\n  <span class=\"overhang-label--{{placement}}\" [style.float]=\"'left'\" [style.left.px]=\"boardData.length - (2 + boardData.stance - boardData.setBackInInches *2.54 * 2) - 30\">{{leftOverhang}} cm</span>\n  <span class=\"overhang-label--{{placement}}\" [style.float]=\"'right'\" [style.right.px]=\"boardData.length  - (2 + boardData.stance + boardData.setBackInInches *2.54 * 2) - 30\">{{rightOverhang}} cm</span>\n  <span *ngIf=\"leftOverhang >= 1\" class=\"overhang-warning-{{placement}}\"\n        [style.border-color]=\"getWarningLevel(leftOverhang)\"\n        [style.border-width.px]=\"getWarningWidth(leftOverhang)\"\n        [style.float]=\"'left'\"\n        [style.left.px]=\"boardData.length - (2 + boardData.stance - boardData.setBackInInches *2.54 * 2) - 25\">\n        </span>\n  <span *ngIf=\"rightOverhang >= 1\" class=\"overhang-warning-{{placement}}\"\n        [style.border-color]=\"getWarningLevel(rightOverhang)\"\n        [style.border-width.px]=\"getWarningWidth(rightOverhang)\"\n        [style.float]=\"'right'\"\n        [style.right.px]=\"boardData.length  - (2 + boardData.stance + boardData.setBackInInches *2.54 * 2) - 25\">\n        </span>\n  <div class=\"overhang-{{placement}}-title\">\n    <ng-container *ngIf=\"placement === 'top'\">\n      Toe overhang:\n    </ng-container>\n    <ng-container *ngIf=\"placement === 'bot'\">\n      Heel overhang:\n    </ng-container>\n  </div>\n</div>\n",
+                        template: "<div class=\"overhang\" *ngIf=\"boardData\" [style.width.px]=\"boardData.length * 2\">\r\n  <span class=\"overhang-label--{{placement}}\" [style.float]=\"'left'\" [style.left.px]=\"boardData.length - (2 + boardData.stance - boardData.setBackInInches *2.54 * 2) - 30\">{{leftOverhang}} cm</span>\r\n  <span class=\"overhang-label--{{placement}}\" [style.float]=\"'right'\" [style.right.px]=\"boardData.length  - (2 + boardData.stance + boardData.setBackInInches *2.54 * 2) - 30\">{{rightOverhang}} cm</span>\r\n  <span *ngIf=\"leftOverhang >= 1\" class=\"overhang-warning-{{placement}}\"\r\n        [style.border-color]=\"getWarningLevel(leftOverhang)\"\r\n        [style.border-width.px]=\"getWarningWidth(leftOverhang)\"\r\n        [style.float]=\"'left'\"\r\n        [style.left.px]=\"boardData.length - (2 + boardData.stance - boardData.setBackInInches *2.54 * 2) - 25\">\r\n        </span>\r\n  <span *ngIf=\"rightOverhang >= 1\" class=\"overhang-warning-{{placement}}\"\r\n        [style.border-color]=\"getWarningLevel(rightOverhang)\"\r\n        [style.border-width.px]=\"getWarningWidth(rightOverhang)\"\r\n        [style.float]=\"'right'\"\r\n        [style.right.px]=\"boardData.length  - (2 + boardData.stance + boardData.setBackInInches *2.54 * 2) - 25\">\r\n        </span>\r\n  <div class=\"overhang-{{placement}}-title\">\r\n    <ng-container *ngIf=\"placement === 'top'\">\r\n      {{'page.snowboardSetup.toeOverhang' | translate}}\r\n    </ng-container>\r\n    <ng-container *ngIf=\"placement === 'bot'\">\r\n      {{'page.snowboardSetup.heelOverhang' | translate}}\r\n    </ng-container>\r\n  </div>\r\n</div>\r\n",
                         styles: [".overhang{position:relative;margin:10px auto;text-align:center}.overhang-label--top{position:absolute;bottom:-2.5rem}.overhang-label--bot{position:absolute;top:-2.5rem}.overhang-top-title{margin-bottom:4rem}.overhang-bot-title{margin-top:4rem}.overhang-warning-top{position:absolute;bottom:-5.2rem;z-index:20;height:1.5rem;width:5rem;border-style:dashed}.overhang-warning-bot{margin-top:-2.7rem;z-index:20;height:1.5rem;width:5rem;border-style:dashed;position:absolute;top:-2.5rem}"]
                     }] }
         ];
@@ -423,11 +544,22 @@
          */
             function () {
             };
+        /**
+         * @param {?} type
+         * @return {?}
+         */
+        DataInputFormComponent.prototype.setMarkPart = /**
+         * @param {?} type
+         * @return {?}
+         */
+            function (type) {
+                this.boardData.markPart = type;
+            };
         DataInputFormComponent.decorators = [
             { type: i0.Component, args: [{
                         selector: 'app-data-input-form',
-                        template: "<div class=\"container-fluid\" *ngIf=\"boardData\">\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Length (in cm):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.length\"  step=\"3\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Waist (in cm):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.waist\" step=\"0.1\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Sidecut radius (in m):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.sidecutInM\" step=\"0.1\" max=\"10\" min=\"6\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Sidecut Setback (in inches):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.sidecutSetbackInInches\" step=\"0.1\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Stance Setback (in inches):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.setBackInInches\"  step=\"0.1\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Stance width (in cm):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.stance\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Angle left foot (in \u00B0):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.leftAngle\" step=\"3\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Angle right foot (in \u00B0):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.rightAngle\" step=\"3\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Boot Profile Size(in cm):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.bootSize\" step=\"0.5\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Binding offset left(in cm):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.bindingOffsetLeft\" step=\"0.1\">\n  </div>\n  <div class=\"row\">\n    <label class=\"col-xs-8\">Binding offset right(in cm):</label>\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.bindingOffsetRight\" step=\"0.1\">\n  </div>\n</div>\n",
-                        styles: [".row{margin-bottom:.5rem;padding-left:3rem;padding-right:3rem}.container-fluid{margin-bottom:3rem}"]
+                        template: "<div class=\"container-fluid\" *ngIf=\"boardData\">\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.length' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.length\"  step=\"3\" (focus)=\"setMarkPart('length')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.waist' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.waist\" step=\"0.1\" (focus)=\"setMarkPart('waist')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.sidecutRadius' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.sidecutInM\" step=\"0.1\" max=\"10\" min=\"6\" (focus)=\"setMarkPart('sidecut')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.sidecutSetback' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.sidecutSetbackInInches\" step=\"0.1\" (focus)=\"setMarkPart('sidecut')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.stanceSetback' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.setBackInInches\"  step=\"0.1\" (focus)=\"setMarkPart('bindings')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.stanceWidth' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.stance\" (focus)=\"setMarkPart('bindings')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.angleLeft' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.leftAngle\" step=\"3\" (focus)=\"setMarkPart('leftBinding')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.angleRight' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.rightAngle\" step=\"3\" (focus)=\"setMarkPart('rightBinding')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.bootProfile' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.bootSize\" step=\"0.5\" (focus)=\"setMarkPart('boots')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.bindingOffsetLeft' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.bindingOffsetLeft\" step=\"0.1\" (focus)=\"setMarkPart('bindingsBootPlateLeft')\">\r\n  </div>\r\n  <div class=\"row\">\r\n    <label class=\"col-xs-8\">{{'page.snowboardSetup.bindingOffsetRight' | translate}}:</label>\r\n    <input class=\"col-xs-3\" type=\"number\" [(ngModel)]=\"boardData.bindingOffsetRight\" step=\"0.1\" (focus)=\"setMarkPart('bindingsBootPlateRight')\">\r\n  </div>\r\n</div>\r\n",
+                        styles: [".row{margin-bottom:.5rem;padding-left:3rem;padding-right:3rem}.container-fluid{margin-bottom:3rem}.plate-active{background-color:rgba(255,11,0,.5)}"]
                     }] }
         ];
         /** @nocollapse */
@@ -442,6 +574,8 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    common.registerLocaleData(localeDe);
+    common.registerLocaleData(localeEn);
     var SnowboardSetupSimulatorModule = /** @class */ (function () {
         function SnowboardSetupSimulatorModule() {
         }
@@ -458,7 +592,8 @@
                         imports: [
                             platformBrowser.BrowserModule,
                             forms.FormsModule,
-                            common.CommonModule
+                            common.CommonModule,
+                            core.TranslateModule.forRoot()
                         ],
                         exports: [SnowboardSetupSimulatorComponent]
                     },] }

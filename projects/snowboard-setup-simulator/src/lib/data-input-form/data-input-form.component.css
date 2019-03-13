@@ -6,3 +6,7 @@
 .container-fluid {
   margin-bottom: 3rem;
 }
+
+.plate-active{
+  background-color: rgba(255, 11, 0, 0.5);
+}

@@ -45,6 +45,43 @@ export class BoardComponent implements OnInit, DoCheck {
     return 0;
   }
 
+  public getBoardClass() {
+    if (this.boardData.markPart === 'length') {
+      return 'red';
+    }
+    return '';
+  }
+
+  public getWaistClass() {
+    if (this.boardData.markPart === 'waist') {
+      return 'red';
+    }
+    return '';
+  }
+
+  public getSidecutClass() {
+    if (['sidecut', 'length'].indexOf(this.boardData.markPart) >= 0 ) {
+      return 'red';
+    }
+    return '';
+  }
+
+  public isBindingActive(binding: string) {
+    if (['bindings', 'boots'].indexOf(this.boardData.markPart) >= 0) {
+      return true;
+    }
+
+    if (binding === 'right' && ['rightBinding', 'bindingsBootPlateRight'].indexOf(this.boardData.markPart) >= 0) {
+      console.log('right active');
+      return true;
+    }
+
+    if (binding === 'left' && ['leftBinding', 'bindingsBootPlateLeft'].indexOf(this.boardData.markPart) >= 0) {
+      console.log('left active');
+      return true;
+    }
+  }
+
   public getSidecutMargin() {
     if (this.boardData.sidecutInM < 6.3) {
       return -2;

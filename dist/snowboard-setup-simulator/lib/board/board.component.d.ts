@@ -14,6 +14,10 @@ export declare class BoardComponent implements OnInit, DoCheck {
     ngOnInit(): void;
     ngDoCheck(): void;
     getContainerHeight(): number;
+    getBoardClass(): "" | "red";
+    getWaistClass(): "" | "red";
+    getSidecutClass(): "" | "red";
+    isBindingActive(binding: string): boolean;
     getSidecutMargin(): 1 | -1 | 0 | 6 | 2 | 3 | 4 | 5 | -2;
     private calculateRightOverhang;
     private calculateLeftOverhang;

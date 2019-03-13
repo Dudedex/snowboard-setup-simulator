@@ -10,4 +10,6 @@ export class BoardDataDto {
   public bindingOffsetRight: number;
   public bindingOffsetLeft: number;
   public setBackInInches: number;
+
+  public markPart: string;
 }

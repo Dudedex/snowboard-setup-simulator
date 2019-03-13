@@ -10,4 +10,5 @@ export declare class BoardDataDto {
     bindingOffsetRight: number;
     bindingOffsetLeft: number;
     setBackInInches: number;
+    markPart: string;
 }

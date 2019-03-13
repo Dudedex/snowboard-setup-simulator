@@ -18,12 +18,36 @@ export class BindingComponent implements OnInit, OnChanges {
   @Input()
   public bindingOffset: number;
 
+  @Input()
+  public isActive: string;
+
+  @Input()
+  public activeType: string;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+  }
+
+  public getFootbedClass() {
+    if (this.isActive) {
+      if (['bindingsBootPlateLeft', 'bindingsBootPlateRight', 'boots'].indexOf(this.activeType) >= 0) {
+        return 'plate-active';
+      }
+    }
+    return '';
+  }
+
+  public getBidingClass() {
+    if (this.isActive) {
+      if (['bindings', 'leftBinding', 'rightBinding', 'boots'].indexOf(this.activeType) >= 0) {
+        return 'binding-active';
+      }
+    }
+    return '';
   }
 
 }

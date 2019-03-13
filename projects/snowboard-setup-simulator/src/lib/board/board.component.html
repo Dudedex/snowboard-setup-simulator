@@ -2,21 +2,21 @@
   <app-overhang-panel [boardData]="boardData" [placement]="'top'" [leftOverhang]="currentLeftToeOverhang" [rightOverhang]="currentRightToeOverhang"></app-overhang-panel>
   <div class="board"  [style.width.px]="boardData.length * cmInPixelFactor + 6">
     <div class="binding--right" [style.right.px]="boardData.length + 6 - (cmInPixelFactor + boardData.stance + boardData.setBackInInches * inchesInCm * cmInPixelFactor )">
-      <app-binding [angle]="boardData.rightAngle" [bootSize]="boardData.bootSize" [boardWidth]="boardData.waist * cmInPixelFactor + boardData.sidecutInM" [bindingOffset]="boardData.bindingOffsetRight"></app-binding>
+      <app-binding [isActive]="isBindingActive('right')" [activeType]="boardData.markPart" [angle]="boardData.rightAngle" [bootSize]="boardData.bootSize" [boardWidth]="boardData.waist * cmInPixelFactor + boardData.sidecutInM" [bindingOffset]="boardData.bindingOffsetRight"></app-binding>
     </div>
     <div class="binding--left" [style.left.px]="boardData.length + 6 - boardData.stance + boardData.setBackInInches * inchesInCm * cmInPixelFactor">
-      <app-binding [angle]="boardData.leftAngle" [bootSize]="boardData.bootSize" [boardWidth]="boardData.waist * cmInPixelFactor + boardData.sidecutInM" [bindingOffset]="boardData.bindingOffsetLeft"></app-binding>
+      <app-binding [isActive]="isBindingActive('left')" [activeType]="boardData.markPart" [angle]="boardData.leftAngle" [bootSize]="boardData.bootSize" [boardWidth]="boardData.waist * cmInPixelFactor + boardData.sidecutInM" [bindingOffset]="boardData.bindingOffsetLeft"></app-binding>
     </div>
     <div class="board-container" [style.width.px]="boardData.length * cmInPixelFactor + 6" [style.height.px]="boardData.waist * cmInPixelFactor + boardData.sidecutInM" #boardContainer>
-      <div class="board-boarder" [style.width.px]="boardData.length * cmInPixelFactor + 6" [style.height.px]="boardData.waist * cmInPixelFactor + boardData.sidecutInM">
-        <div class="sidecut sidecut-top"
+      <div class="board-boarder {{getBoardClass()}}" [style.width.px]="boardData.length * cmInPixelFactor + 6" [style.height.px]="boardData.waist * cmInPixelFactor + boardData.sidecutInM">
+        <div class="sidecut sidecut-top {{getSidecutClass()}}"
              [style.width.px]="boardData.sidecutInM * mInPixelFactor * 2"
              [style.height.px]="boardData.sidecutInM * mInPixelFactor * 2"
              [style.margin-left.px]=" - boardData.sidecutInM * 200 + cmInPixelFactor + boardData.length + boardData.sidecutSetbackInInches * inchesInCm"
              [style.margin-top.px]="-boardData.sidecutInM * mInPixelFactor * 2 + getContainerHeight() - boardData.waist * cmInPixelFactor - getSidecutMargin()"
         ></div>
-        <div class="waist" [style.right.px]="boardData.length - boardData.sidecutSetbackInInches * inchesInCm * cmInPixelFactor"></div>
-        <div class="sidecut sidecut-bot"
+        <div class="waist {{getWaistClass()}}" [style.right.px]="boardData.length - boardData.sidecutSetbackInInches * inchesInCm * cmInPixelFactor"></div>
+        <div class="sidecut sidecut-bot {{getSidecutClass()}}"
              [style.width.px]="boardData.sidecutInM * mInPixelFactor * 2"
              [style.height.px]="boardData.sidecutInM * mInPixelFactor * 2"
              [style.margin-left.px]=" - boardData.sidecutInM * 200 + cmInPixelFactor + boardData.length + boardData.sidecutSetbackInInches * inchesInCm"
