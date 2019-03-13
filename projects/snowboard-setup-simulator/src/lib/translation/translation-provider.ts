@@ -4,8 +4,8 @@ import {En} from './en';
 
 export class TranslationProvider {
   public static setupTranslationProvider(translate: TranslateService, defaultLocale?: string) {
-    translate.setTranslation('de', De.translation());
-    translate.setTranslation('en', En.translation());
+    translate.setTranslation('de', De.translation(), true);
+    translate.setTranslation('en', En.translation(), true);
     if (defaultLocale) {
       translate.setDefaultLang(defaultLocale);
     } else {

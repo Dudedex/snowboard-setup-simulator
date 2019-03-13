@@ -89,8 +89,8 @@ class TranslationProvider {
      * @return {?}
      */
     static setupTranslationProvider(translate, defaultLocale) {
-        translate.setTranslation('de', De.translation());
-        translate.setTranslation('en', En.translation());
+        translate.setTranslation('de', De.translation(), true);
+        translate.setTranslation('en', En.translation(), true);
         if (defaultLocale) {
             translate.setDefaultLang(defaultLocale);
         }
