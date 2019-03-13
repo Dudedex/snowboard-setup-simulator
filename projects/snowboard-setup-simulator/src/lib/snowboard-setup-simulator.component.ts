@@ -1,8 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {TranslationProvider} from 'snowboard-setup-simulator/translation/translation-provider';
-import {De} from 'snowboard-setup-simulator/translation/de';
-import {En} from 'snowboard-setup-simulator/translation/en';
+import {TranslationProvider} from './translation/translation-provider';
 
 @Component({
   selector: 'lib-snowboard-setup-simulator',
