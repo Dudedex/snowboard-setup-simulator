@@ -20,18 +20,18 @@
     "@angular/platform-browser": "^7.2.6",
     "@angular/platform-browser-dynamic": "^7.2.6",
     "@angular/router": "^7.2.6",
-    "@types/jquery": "^3.3.29",
     "@ngx-translate/core": "^11.0.1",
+    "@types/jquery": "^3.3.29",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
-    "rxjs": "6.4.0",
-    "zone.js": "^0.8.26",
     "paths": {
       "snowboard-setup-simulator": [
         "projects/snowboard-setup-simulator"
       ]
-    }
+    },
+    "rxjs": "6.4.0",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.3",

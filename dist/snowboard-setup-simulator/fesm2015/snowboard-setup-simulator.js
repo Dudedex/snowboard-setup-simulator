@@ -1,10 +1,12 @@
-import { TranslationProvider } from 'snowboard-setup-simulator/translation/translation-provider';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import localeDe from '@angular/common/locales/de';
 import localeEn from '@angular/common/locales/en';
 import { Injectable, Component, Input, NgModule, defineInjectable } from '@angular/core';
+import { TranslationProvider } from 'snowboard-setup-simulator/translation/translation-provider';
+import { De } from 'snowboard-setup-simulator/translation/de';
+import { En } from 'snowboard-setup-simulator/translation/en';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 /**
@@ -475,84 +477,6 @@ DataInputFormComponent.propDecorators = {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
-class De {
-    /**
-     * @return {?}
-     */
-    static translation() {
-        return {
-            // Translation Keys
-            'page.snowboardSetup.toeOverhang': 'Zehenüberstand',
-            'page.snowboardSetup.heelOverhang': 'Fersenüberstand',
-            'page.snowboardSetup.length': 'Länge (in cm)',
-            'page.snowboardSetup.waist': 'Tailie (in cm)',
-            'page.snowboardSetup.sidecutRadius': 'Sidecut Radius (in m)',
-            'page.snowboardSetup.sidecutSetback': 'Sidecut Rückversätzung (in inches)',
-            'page.snowboardSetup.stanceSetback': 'Haltung Rückversätzung (in inches)',
-            'page.snowboardSetup.stanceWidth': 'Standbreite (in cm)',
-            'page.snowboardSetup.angleLeft': 'Bindungswinkel Links (in °)',
-            'page.snowboardSetup.angleRight': 'Bindungswinkel Rechts (in °)',
-            'page.snowboardSetup.bootProfile': 'Schuhprofilgröße (in cm)',
-            'page.snowboardSetup.bindingOffsetLeft': 'Bindungsversatz Links (in cm)',
-            'page.snowboardSetup.bindingOffsetRight': 'Bindungsversatz Rechts (in cm)',
-        };
-    }
-}
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class En {
-    /**
-     * @return {?}
-     */
-    static translation() {
-        return {
-            // Translation Keys
-            'page.snowboardSetup.toeOverhang': 'Toe overhang',
-            'page.snowboardSetup.heelOverhang': 'Heel overhang',
-            'page.snowboardSetup.length': 'Length (in cm)',
-            'page.snowboardSetup.waist': 'Waist (in cm)',
-            'page.snowboardSetup.sidecutRadius': 'Sidecut radius (in m)',
-            'page.snowboardSetup.sidecutSetback': 'Sidecut Setback (in inches)',
-            'page.snowboardSetup.stanceSetback': 'Stance Setback (in inches)',
-            'page.snowboardSetup.stanceWidth': 'Stance width (in cm)',
-            'page.snowboardSetup.angleLeft': 'Angle left foot (in °)',
-            'page.snowboardSetup.angleRight': 'Angle right foot (in °)',
-            'page.snowboardSetup.bootProfile': 'Boot Profile Size(in cm)',
-            'page.snowboardSetup.bindingOffsetLeft': 'Binding offset left(in cm)',
-            'page.snowboardSetup.bindingOffsetRight': 'Binding offset right(in cm)',
-        };
-    }
-}
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-class TranslationProvider$1 {
-    /**
-     * @param {?} translate
-     * @param {?=} defaultLocale
-     * @return {?}
-     */
-    static setupTranslationProvider(translate, defaultLocale) {
-        translate.setTranslation('de', De.translation());
-        translate.setTranslation('en', En.translation());
-        if (defaultLocale) {
-            translate.setDefaultLang(defaultLocale);
-        }
-        else {
-            translate.setDefaultLang('de');
-        }
-    }
-}
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
 registerLocaleData(localeDe);
 registerLocaleData(localeEn);
 class SnowboardSetupSimulatorModule {
@@ -574,7 +498,7 @@ SnowboardSetupSimulatorModule.decorators = [
                     TranslateModule.forRoot()
                 ],
                 providers: [
-                    TranslationProvider$1,
+                    TranslationProvider,
                     De,
                     En
                 ],
@@ -592,6 +516,6 @@ SnowboardSetupSimulatorModule.decorators = [
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { SnowboardSetupSimulatorService, SnowboardSetupSimulatorComponent, SnowboardSetupSimulatorModule, BindingComponent as ɵc, BoardPanelComponent as ɵb, BoardComponent as ɵa, DataInputFormComponent as ɵe, OverhangPanelComponent as ɵd, De as ɵg, En as ɵh, TranslationProvider$1 as ɵf };
+export { SnowboardSetupSimulatorService, SnowboardSetupSimulatorComponent, SnowboardSetupSimulatorModule, BindingComponent as ɵc, BoardPanelComponent as ɵb, BoardComponent as ɵa, DataInputFormComponent as ɵe, OverhangPanelComponent as ɵd };
 
 //# sourceMappingURL=snowboard-setup-simulator.js.map

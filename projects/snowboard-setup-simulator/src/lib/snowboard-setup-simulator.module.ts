@@ -10,10 +10,10 @@ import {BoardPanelComponent} from './board-panel/board-panel.component';
 import {BindingComponent} from './binding/binding.component';
 import {OverhangPanelComponent} from './overhang-panel/overhang-panel.component';
 import {DataInputFormComponent} from './data-input-form/data-input-form.component';
+import {TranslationProvider} from 'snowboard-setup-simulator/translation/translation-provider';
+import {De} from 'snowboard-setup-simulator/translation/de';
+import {En} from 'snowboard-setup-simulator/translation/en';
 import {TranslateModule} from '@ngx-translate/core';
-import {TranslationProvider} from './translation/translation-provider';
-import {De} from './translation/de';
-import {En} from './translation/en';
 
 registerLocaleData(localeDe);
 registerLocaleData(localeEn);

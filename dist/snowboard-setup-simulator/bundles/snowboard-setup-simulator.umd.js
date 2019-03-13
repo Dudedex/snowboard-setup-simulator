@@ -1,8 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('snowboard-setup-simulator/translation/translation-provider'), require('@angular/forms'), require('@angular/common'), require('@angular/platform-browser'), require('@angular/common/locales/de'), require('@angular/common/locales/en'), require('@angular/core'), require('@ngx-translate/core')) :
-    typeof define === 'function' && define.amd ? define('snowboard-setup-simulator', ['exports', 'snowboard-setup-simulator/translation/translation-provider', '@angular/forms', '@angular/common', '@angular/platform-browser', '@angular/common/locales/de', '@angular/common/locales/en', '@angular/core', '@ngx-translate/core'], factory) :
-    (factory((global['snowboard-setup-simulator'] = {}),global.translationProvider,global.ng.forms,global.ng.common,global.ng.platformBrowser,global.ng.common.locales.de,global.ng.common.locales.en,global.ng.core,global.core));
-}(this, (function (exports,translationProvider,forms,common,platformBrowser,localeDe,localeEn,i0,core) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/forms'), require('@angular/common'), require('@angular/platform-browser'), require('@angular/common/locales/de'), require('@angular/common/locales/en'), require('@angular/core'), require('snowboard-setup-simulator/translation/translation-provider'), require('snowboard-setup-simulator/translation/de'), require('snowboard-setup-simulator/translation/en'), require('@ngx-translate/core')) :
+    typeof define === 'function' && define.amd ? define('snowboard-setup-simulator', ['exports', '@angular/forms', '@angular/common', '@angular/platform-browser', '@angular/common/locales/de', '@angular/common/locales/en', '@angular/core', 'snowboard-setup-simulator/translation/translation-provider', 'snowboard-setup-simulator/translation/de', 'snowboard-setup-simulator/translation/en', '@ngx-translate/core'], factory) :
+    (factory((global['snowboard-setup-simulator'] = {}),global.ng.forms,global.ng.common,global.ng.platformBrowser,global.ng.common.locales.de,global.ng.common.locales.en,global.ng.core,global.translationProvider,global.de,global.en,global.core));
+}(this, (function (exports,forms,common,platformBrowser,localeDe,localeEn,i0,translationProvider,de,en,core) { 'use strict';
 
     localeDe = localeDe && localeDe.hasOwnProperty('default') ? localeDe['default'] : localeDe;
     localeEn = localeEn && localeEn.hasOwnProperty('default') ? localeEn['default'] : localeEn;
@@ -574,104 +574,6 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
-    var De = /** @class */ (function () {
-        function De() {
-        }
-        /**
-         * @return {?}
-         */
-        De.translation = /**
-         * @return {?}
-         */
-            function () {
-                return {
-                    // Translation Keys
-                    'page.snowboardSetup.toeOverhang': 'Zehenüberstand',
-                    'page.snowboardSetup.heelOverhang': 'Fersenüberstand',
-                    'page.snowboardSetup.length': 'Länge (in cm)',
-                    'page.snowboardSetup.waist': 'Tailie (in cm)',
-                    'page.snowboardSetup.sidecutRadius': 'Sidecut Radius (in m)',
-                    'page.snowboardSetup.sidecutSetback': 'Sidecut Rückversätzung (in inches)',
-                    'page.snowboardSetup.stanceSetback': 'Haltung Rückversätzung (in inches)',
-                    'page.snowboardSetup.stanceWidth': 'Standbreite (in cm)',
-                    'page.snowboardSetup.angleLeft': 'Bindungswinkel Links (in °)',
-                    'page.snowboardSetup.angleRight': 'Bindungswinkel Rechts (in °)',
-                    'page.snowboardSetup.bootProfile': 'Schuhprofilgröße (in cm)',
-                    'page.snowboardSetup.bindingOffsetLeft': 'Bindungsversatz Links (in cm)',
-                    'page.snowboardSetup.bindingOffsetRight': 'Bindungsversatz Rechts (in cm)',
-                };
-            };
-        return De;
-    }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    var En = /** @class */ (function () {
-        function En() {
-        }
-        /**
-         * @return {?}
-         */
-        En.translation = /**
-         * @return {?}
-         */
-            function () {
-                return {
-                    // Translation Keys
-                    'page.snowboardSetup.toeOverhang': 'Toe overhang',
-                    'page.snowboardSetup.heelOverhang': 'Heel overhang',
-                    'page.snowboardSetup.length': 'Length (in cm)',
-                    'page.snowboardSetup.waist': 'Waist (in cm)',
-                    'page.snowboardSetup.sidecutRadius': 'Sidecut radius (in m)',
-                    'page.snowboardSetup.sidecutSetback': 'Sidecut Setback (in inches)',
-                    'page.snowboardSetup.stanceSetback': 'Stance Setback (in inches)',
-                    'page.snowboardSetup.stanceWidth': 'Stance width (in cm)',
-                    'page.snowboardSetup.angleLeft': 'Angle left foot (in °)',
-                    'page.snowboardSetup.angleRight': 'Angle right foot (in °)',
-                    'page.snowboardSetup.bootProfile': 'Boot Profile Size(in cm)',
-                    'page.snowboardSetup.bindingOffsetLeft': 'Binding offset left(in cm)',
-                    'page.snowboardSetup.bindingOffsetRight': 'Binding offset right(in cm)',
-                };
-            };
-        return En;
-    }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    var TranslationProvider = /** @class */ (function () {
-        function TranslationProvider() {
-        }
-        /**
-         * @param {?} translate
-         * @param {?=} defaultLocale
-         * @return {?}
-         */
-        TranslationProvider.setupTranslationProvider = /**
-         * @param {?} translate
-         * @param {?=} defaultLocale
-         * @return {?}
-         */
-            function (translate, defaultLocale) {
-                translate.setTranslation('de', De.translation());
-                translate.setTranslation('en', En.translation());
-                if (defaultLocale) {
-                    translate.setDefaultLang(defaultLocale);
-                }
-                else {
-                    translate.setDefaultLang('de');
-                }
-            };
-        return TranslationProvider;
-    }());
-
-    /**
-     * @fileoverview added by tsickle
-     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     common.registerLocaleData(localeDe);
     common.registerLocaleData(localeEn);
     var SnowboardSetupSimulatorModule = /** @class */ (function () {
@@ -694,9 +596,9 @@
                             core.TranslateModule.forRoot()
                         ],
                         providers: [
-                            TranslationProvider,
-                            De,
-                            En
+                            translationProvider.TranslationProvider,
+                            de.De,
+                            en.En
                         ],
                         exports: [SnowboardSetupSimulatorComponent]
                     },] }
@@ -722,9 +624,6 @@
     exports.ɵa = BoardComponent;
     exports.ɵe = DataInputFormComponent;
     exports.ɵd = OverhangPanelComponent;
-    exports.ɵg = De;
-    exports.ɵh = En;
-    exports.ɵf = TranslationProvider;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
