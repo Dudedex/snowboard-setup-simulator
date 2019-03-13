@@ -574,6 +574,104 @@
      * @fileoverview added by tsickle
      * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
+    var De = /** @class */ (function () {
+        function De() {
+        }
+        /**
+         * @return {?}
+         */
+        De.translation = /**
+         * @return {?}
+         */
+            function () {
+                return {
+                    // Translation Keys
+                    'page.snowboardSetup.toeOverhang': 'Zehenüberstand',
+                    'page.snowboardSetup.heelOverhang': 'Fersenüberstand',
+                    'page.snowboardSetup.length': 'Länge (in cm)',
+                    'page.snowboardSetup.waist': 'Tailie (in cm)',
+                    'page.snowboardSetup.sidecutRadius': 'Sidecut Radius (in m)',
+                    'page.snowboardSetup.sidecutSetback': 'Sidecut Rückversätzung (in inches)',
+                    'page.snowboardSetup.stanceSetback': 'Haltung Rückversätzung (in inches)',
+                    'page.snowboardSetup.stanceWidth': 'Standbreite (in cm)',
+                    'page.snowboardSetup.angleLeft': 'Bindungswinkel Links (in °)',
+                    'page.snowboardSetup.angleRight': 'Bindungswinkel Rechts (in °)',
+                    'page.snowboardSetup.bootProfile': 'Schuhprofilgröße (in cm)',
+                    'page.snowboardSetup.bindingOffsetLeft': 'Bindungsversatz Links (in cm)',
+                    'page.snowboardSetup.bindingOffsetRight': 'Bindungsversatz Rechts (in cm)',
+                };
+            };
+        return De;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var En = /** @class */ (function () {
+        function En() {
+        }
+        /**
+         * @return {?}
+         */
+        En.translation = /**
+         * @return {?}
+         */
+            function () {
+                return {
+                    // Translation Keys
+                    'page.snowboardSetup.toeOverhang': 'Toe overhang',
+                    'page.snowboardSetup.heelOverhang': 'Heel overhang',
+                    'page.snowboardSetup.length': 'Length (in cm)',
+                    'page.snowboardSetup.waist': 'Waist (in cm)',
+                    'page.snowboardSetup.sidecutRadius': 'Sidecut radius (in m)',
+                    'page.snowboardSetup.sidecutSetback': 'Sidecut Setback (in inches)',
+                    'page.snowboardSetup.stanceSetback': 'Stance Setback (in inches)',
+                    'page.snowboardSetup.stanceWidth': 'Stance width (in cm)',
+                    'page.snowboardSetup.angleLeft': 'Angle left foot (in °)',
+                    'page.snowboardSetup.angleRight': 'Angle right foot (in °)',
+                    'page.snowboardSetup.bootProfile': 'Boot Profile Size(in cm)',
+                    'page.snowboardSetup.bindingOffsetLeft': 'Binding offset left(in cm)',
+                    'page.snowboardSetup.bindingOffsetRight': 'Binding offset right(in cm)',
+                };
+            };
+        return En;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
+    var TranslationProvider = /** @class */ (function () {
+        function TranslationProvider() {
+        }
+        /**
+         * @param {?} translate
+         * @param {?=} defaultLocale
+         * @return {?}
+         */
+        TranslationProvider.setupTranslationProvider = /**
+         * @param {?} translate
+         * @param {?=} defaultLocale
+         * @return {?}
+         */
+            function (translate, defaultLocale) {
+                translate.setTranslation('de', De.translation());
+                translate.setTranslation('en', En.translation());
+                if (defaultLocale) {
+                    translate.setDefaultLang(defaultLocale);
+                }
+                else {
+                    translate.setDefaultLang('de');
+                }
+            };
+        return TranslationProvider;
+    }());
+
+    /**
+     * @fileoverview added by tsickle
+     * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
     common.registerLocaleData(localeDe);
     common.registerLocaleData(localeEn);
     var SnowboardSetupSimulatorModule = /** @class */ (function () {
@@ -594,6 +692,11 @@
                             forms.FormsModule,
                             common.CommonModule,
                             core.TranslateModule.forRoot()
+                        ],
+                        providers: [
+                            TranslationProvider,
+                            De,
+                            En
                         ],
                         exports: [SnowboardSetupSimulatorComponent]
                     },] }
@@ -619,6 +722,9 @@
     exports.ɵa = BoardComponent;
     exports.ɵe = DataInputFormComponent;
     exports.ɵd = OverhangPanelComponent;
+    exports.ɵg = De;
+    exports.ɵh = En;
+    exports.ɵf = TranslationProvider;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

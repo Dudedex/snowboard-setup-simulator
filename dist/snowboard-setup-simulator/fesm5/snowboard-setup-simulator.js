@@ -572,6 +572,104 @@ var DataInputFormComponent = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+var De = /** @class */ (function () {
+    function De() {
+    }
+    /**
+     * @return {?}
+     */
+    De.translation = /**
+     * @return {?}
+     */
+    function () {
+        return {
+            // Translation Keys
+            'page.snowboardSetup.toeOverhang': 'Zehenüberstand',
+            'page.snowboardSetup.heelOverhang': 'Fersenüberstand',
+            'page.snowboardSetup.length': 'Länge (in cm)',
+            'page.snowboardSetup.waist': 'Tailie (in cm)',
+            'page.snowboardSetup.sidecutRadius': 'Sidecut Radius (in m)',
+            'page.snowboardSetup.sidecutSetback': 'Sidecut Rückversätzung (in inches)',
+            'page.snowboardSetup.stanceSetback': 'Haltung Rückversätzung (in inches)',
+            'page.snowboardSetup.stanceWidth': 'Standbreite (in cm)',
+            'page.snowboardSetup.angleLeft': 'Bindungswinkel Links (in °)',
+            'page.snowboardSetup.angleRight': 'Bindungswinkel Rechts (in °)',
+            'page.snowboardSetup.bootProfile': 'Schuhprofilgröße (in cm)',
+            'page.snowboardSetup.bindingOffsetLeft': 'Bindungsversatz Links (in cm)',
+            'page.snowboardSetup.bindingOffsetRight': 'Bindungsversatz Rechts (in cm)',
+        };
+    };
+    return De;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var En = /** @class */ (function () {
+    function En() {
+    }
+    /**
+     * @return {?}
+     */
+    En.translation = /**
+     * @return {?}
+     */
+    function () {
+        return {
+            // Translation Keys
+            'page.snowboardSetup.toeOverhang': 'Toe overhang',
+            'page.snowboardSetup.heelOverhang': 'Heel overhang',
+            'page.snowboardSetup.length': 'Length (in cm)',
+            'page.snowboardSetup.waist': 'Waist (in cm)',
+            'page.snowboardSetup.sidecutRadius': 'Sidecut radius (in m)',
+            'page.snowboardSetup.sidecutSetback': 'Sidecut Setback (in inches)',
+            'page.snowboardSetup.stanceSetback': 'Stance Setback (in inches)',
+            'page.snowboardSetup.stanceWidth': 'Stance width (in cm)',
+            'page.snowboardSetup.angleLeft': 'Angle left foot (in °)',
+            'page.snowboardSetup.angleRight': 'Angle right foot (in °)',
+            'page.snowboardSetup.bootProfile': 'Boot Profile Size(in cm)',
+            'page.snowboardSetup.bindingOffsetLeft': 'Binding offset left(in cm)',
+            'page.snowboardSetup.bindingOffsetRight': 'Binding offset right(in cm)',
+        };
+    };
+    return En;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var TranslationProvider$1 = /** @class */ (function () {
+    function TranslationProvider$$1() {
+    }
+    /**
+     * @param {?} translate
+     * @param {?=} defaultLocale
+     * @return {?}
+     */
+    TranslationProvider$$1.setupTranslationProvider = /**
+     * @param {?} translate
+     * @param {?=} defaultLocale
+     * @return {?}
+     */
+    function (translate, defaultLocale) {
+        translate.setTranslation('de', De.translation());
+        translate.setTranslation('en', En.translation());
+        if (defaultLocale) {
+            translate.setDefaultLang(defaultLocale);
+        }
+        else {
+            translate.setDefaultLang('de');
+        }
+    };
+    return TranslationProvider$$1;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 registerLocaleData(localeDe);
 registerLocaleData(localeEn);
 var SnowboardSetupSimulatorModule = /** @class */ (function () {
@@ -593,6 +691,11 @@ var SnowboardSetupSimulatorModule = /** @class */ (function () {
                         CommonModule,
                         TranslateModule.forRoot()
                     ],
+                    providers: [
+                        TranslationProvider$1,
+                        De,
+                        En
+                    ],
                     exports: [SnowboardSetupSimulatorComponent]
                 },] }
     ];
@@ -609,6 +712,6 @@ var SnowboardSetupSimulatorModule = /** @class */ (function () {
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { SnowboardSetupSimulatorService, SnowboardSetupSimulatorComponent, SnowboardSetupSimulatorModule, BindingComponent as ɵc, BoardPanelComponent as ɵb, BoardComponent as ɵa, DataInputFormComponent as ɵe, OverhangPanelComponent as ɵd };
+export { SnowboardSetupSimulatorService, SnowboardSetupSimulatorComponent, SnowboardSetupSimulatorModule, BindingComponent as ɵc, BoardPanelComponent as ɵb, BoardComponent as ɵa, DataInputFormComponent as ɵe, OverhangPanelComponent as ɵd, De as ɵg, En as ɵh, TranslationProvider$1 as ɵf };
 
 //# sourceMappingURL=snowboard-setup-simulator.js.map

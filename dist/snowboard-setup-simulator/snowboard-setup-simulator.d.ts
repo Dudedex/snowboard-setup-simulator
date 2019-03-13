@@ -7,3 +7,6 @@ export { BoardPanelComponent as ɵb } from './lib/board-panel/board-panel.compon
 export { BoardComponent as ɵa } from './lib/board/board.component';
 export { DataInputFormComponent as ɵe } from './lib/data-input-form/data-input-form.component';
 export { OverhangPanelComponent as ɵd } from './lib/overhang-panel/overhang-panel.component';
+export { De as ɵg } from './lib/translation/de';
+export { En as ɵh } from './lib/translation/en';
+export { TranslationProvider as ɵf } from './lib/translation/translation-provider';

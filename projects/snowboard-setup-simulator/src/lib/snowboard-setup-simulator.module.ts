@@ -11,6 +11,9 @@ import {BindingComponent} from './binding/binding.component';
 import {OverhangPanelComponent} from './overhang-panel/overhang-panel.component';
 import {DataInputFormComponent} from './data-input-form/data-input-form.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {TranslationProvider} from './translation/translation-provider';
+import {De} from './translation/de';
+import {En} from './translation/en';
 
 registerLocaleData(localeDe);
 registerLocaleData(localeEn);
@@ -29,6 +32,11 @@ registerLocaleData(localeEn);
     FormsModule,
     CommonModule,
     TranslateModule.forRoot()
+  ],
+  providers: [
+    TranslationProvider,
+    De,
+    En
   ],
   exports: [SnowboardSetupSimulatorComponent]
 })
